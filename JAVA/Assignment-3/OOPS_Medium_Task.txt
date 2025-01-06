@@ -1,0 +1,449 @@
+1. Exercise:Create a package called shapes. Create some classes in the package representing some common geometric shapes like Square, Triangle, Circle and so on. 
+Create a class called TestShapes and create objects for all the shapes and print corresponding messages.Execute the TestShapes class.
+
+Circle.java
+
+package Shapes;
+
+public class Circle {
+	final double pi=3.14;
+	int radius;
+	
+	Circle(int radius)
+	{
+		this.radius=radius;
+	}
+	
+	public void areaOfCircle()
+	{
+		System.out.println("Area of Circle is: "+(pi*radius*radius));
+	}
+	public void perimeterOfCircle()
+	{
+		System.out.println("Perimeter of the Circle is: "+(2*pi*radius));
+	}
+}
+
+
+Rectangle.java
+
+package Shapes;
+
+public class Rectangle {
+	int length,breadth;
+
+	public void perimeterOfRectangle(int length,int breadth)
+	{
+		System.out.println("Perimeter of Rectangle is: "+(2*(length+breadth)));
+	}
+	public void areaOfRectangle(int length,int breadth)
+	{
+		System.out.println("Area of the Rectangle is: "+(length*breadth));
+	}
+}
+
+
+Square.java
+
+package Shapes;
+
+public class Square {
+	int length;
+	
+	Square(int length)
+	{
+		this.length=length;
+	}
+	
+	public void areaOfSquare()
+	{
+		System.out.println("Area of Square is: "+(length*length));
+	}
+	public void perimeterOfSquare()
+	{
+		System.out.println("Perimeter of the Square is: "+(4*length));
+	}
+}
+
+
+TestClass.java   //main class
+
+package Shapes;
+
+import java.util.Scanner;
+
+public class TestClass {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the length/Radius:");
+		int length=sc.nextInt();
+		System.out.println("Enter the breadth:");
+		int breadth=sc.nextInt();
+		
+		Circle circle=new Circle(length);
+		Square square=new Square(length);
+		Rectangle rectangle=new Rectangle();
+		circle.areaOfCircle();
+		circle.perimeterOfCircle();
+		System.out.println("=======================================================");
+		square.areaOfSquare();
+		square.perimeterOfSquare();
+		System.out.println("=======================================================");
+		rectangle.areaOfRectangle(length, breadth);
+		rectangle.perimeterOfRectangle(length, breadth);
+
+	}
+
+}
+
+Output:
+
+Enter the length/Radius:
+10
+Enter the breadth:
+15
+
+Area of Circle is: 314.0
+Perimeter of the Circle is: 62.800000000000004
+=======================================================
+Area of Square is: 100
+Perimeter of the Square is: 40
+=======================================================
+Area of the Rectangle is: 150
+Perimeter of Rectangle is: 50
+
+============================================================================================================================================================
+============================================================================================================================================================
+
+2. Exercise:Create a class called shape with the following methods
+
+1. area
+2. perimeter
+
+Overload the area and perimeter method to calculate for both square and rectangle.
+
+Create a main class and invoke the area method to calculate the area of the square and rectangle. 
+Also invoke the perimeter method to calculate the perimeter of the square and rectangle.
+
+package Assignment_Day_04;
+
+import java.util.Scanner;
+
+class Square{
+	
+	public void area(int length)
+	{
+		System.out.println("Area of Square is: "+(length*length));
+	}
+	public void perimeter(int length)
+	{
+		System.out.println("Perimeter of the Square is: "+(4*length));
+	}
+}
+class Rectangle extends Square{
+	
+	public void perimeter(int length,int breadth)
+	{
+		System.out.println("Perimeter of Rectangle is: "+(2*(length+breadth)));
+	}
+	public void area(int length,int breadth)
+	{
+		System.out.println("Area of the Rectangle is: "+(length*breadth));
+	}
+}
+public class Shape {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the length:");
+		int length=sc.nextInt();
+		System.out.println("Enter the breadth:");
+		int breadth=sc.nextInt();
+		
+		Rectangle rect=new Rectangle();
+		rect.area(length);
+		rect.area(length,breadth);
+		rect.perimeter(length);
+		rect.perimeter(length, breadth);
+	}
+
+}
+
+Output:
+
+Enter the length:
+10
+Enter the breadth:
+8
+Area of Square is: 100
+Area of the Rectangle is: 80
+Perimeter of the Square is: 40
+Perimeter of Rectangle is: 36
+
+=============================================================================================================================================================
+============================================================================================================================================================
+
+3. :Create a class called Calculator which has 4 different methods add, diff, mul and div which accepts two numbers as parameters. 
+Overload the methods such that the parameters can be of the following pattern.
+
+1. Both are of int data type.
+2. Both are of double data type.
+3. First parameter is of int data type and second parameter is of double data type.
+4. First parameter is of double data type and second parameter is of int data type.
+
+Create anobject to access these methods and invoke these methods with different type of numbers and display the result in the corresponding methods.
+
+
+
+package Assignment_Day_04;
+
+class Operations{
+	public void add(int number1,int number2)
+	{
+		System.out.println("The Addition of 2 numbers is: "+(number1+number2));
+	}
+	public void add(double number1,double number2)
+	{
+		System.out.println("The Addition of 2 numbers is: "+(number1+number2));
+	}
+	public void add(double number1,int number2)
+	{
+		System.out.println("The Addition of 2 numbers is: "+(number1+number2));
+	}
+	public void add(int number1,double number2)
+	{
+		System.out.println("The Addition of 2 numbers is: "+(number1+number2));
+	}
+	public void sub(int number1,int number2)
+	{
+		System.out.println("The Subtraction of 2 numbers is: "+(number1-number2));
+	}
+	public void sub(double number1,double number2)
+	{
+		System.out.println("The Subtraction of 2 numbers is: "+(number1-number2));
+	}
+	public void sub(double number1,int number2)
+	{
+		System.out.println("The Subtraction of 2 numbers is: "+(number1-number2));
+	}
+	public void sub(int number1,double number2)
+	{
+		System.out.println("The Subtraction of 2 numbers is: "+(number1-number2));
+	}
+	public void mul(int number1,int number2)
+	{
+		System.out.println("The Multiplication of 2 numbers is: "+(number1*number2));
+	}
+	public void mul(double number1,double number2)
+	{
+		System.out.println("The Multiplication of 2 numbers is: "+(number1*number2));
+	}
+	public void mul(double number1,int number2)
+	{
+		System.out.println("The Multiplication of 2 numbers is: "+(number1*number2));
+	}
+	public void mul(int number1,double number2)
+	{
+		System.out.println("The Multiplication of 2 numbers is: "+(number1*number2));
+	}
+	public void div(int number1,int number2)
+	{
+		System.out.println("The Division of 2 numbers is: "+(number1/number2));
+	}
+	public void div(double number1,double number2)
+	{
+		System.out.println("The Division of 2 numbers is: "+(number1/number2));
+	}
+	public void div(double number1,int number2)
+	{
+		System.out.println("The Division of 2 numbers is: "+(number1/number2));
+	}
+	public void div(int number1,double number2)
+	{
+		System.out.println("The Division of 2 numbers is: "+(number1/number2));
+	}
+}
+public class Calculator {
+
+	public static void main(String[] args) {
+		Operations op=new Operations();
+		op.add(5,3);
+		op.add(56.1, 3);
+		op.add(50,31.5);
+		op.add(56.5, 17.8);
+		op.sub(5,3);
+		op.sub(56.1, 3);
+		op.sub(50,31.5);
+		op.sub(56.5, 17.8);
+		op.mul(5,3);
+		op.mul(56.1, 3);
+		op.mul(50,31.5);
+		op.mul(56.5, 17.8);
+		op.div(5,3);
+		op.div(56.1, 3);
+		op.div(50,31.5);
+		op.div(56.5, 17.8);
+	}
+
+}
+
+Output:
+
+The Addition of 2 numbers is: 8
+The Addition of 2 numbers is: 59.1
+The Addition of 2 numbers is: 81.5
+The Addition of 2 numbers is: 74.3
+The Subtraction of 2 numbers is: 2
+The Subtraction of 2 numbers is: 53.1
+The Subtraction of 2 numbers is: 18.5
+The Subtraction of 2 numbers is: 38.7
+The Multiplication of 2 numbers is: 15
+The Multiplication of 2 numbers is: 168.3
+The Multiplication of 2 numbers is: 1575.0
+The Multiplication of 2 numbers is: 1005.7
+The Division of 2 numbers is: 1
+The Division of 2 numbers is: 18.7
+The Division of 2 numbers is: 1.5873015873015872
+The Division of 2 numbers is: 3.1741573033707864
+
+============================================================================================================================================================
+============================================================================================================================================================
+
+4. Exercise: Create a class called Vehicle. Create subclasses like Truck, Bus, Car etc. Add common methods in the base class and specific methods in the corresponding class. Create a class called Road.and create objects for the Truck, Car, Bus etc and display the appropriate message
+
+
+package Assignmet_Day_04;
+
+class Vechicle{
+	String name;
+	String number;
+	String color;
+	Vechicle(String name, String number, String color)
+	{
+		this.name=name;
+		this.number=number;
+		this.color=color;
+		System.out.println("Name of the Vechicle:"+name+"\nNumber of the Vechicle: "+number+"\nColour of the Vechicle: "+color);
+	}
+}
+class Truck extends Vechicle{
+	String name;
+	String number;
+	String color;
+	Truck(String name, String number, String color)
+	{
+		super(name, number, color);
+	}
+	public void VarietyOfTrucks()
+	{
+		System.out.println("Sand_Load");
+		System.out.println("Grains_Load");
+		System.out.println("Vechiles_Load");
+		System.out.println("Stone_Load");
+		System.out.println("Parcel_Services");
+		
+		System.out.println("==========================================================================");
+	}
+}
+class Bus extends Vechicle{
+	String name,number,color;
+	Bus(String name, String number, String color)
+	{
+		super(name,number,color);
+	}
+	public void LocationToTravel()
+	{
+		System.out.println("Salem To Hyderbad" +" "+ " Hyderbad to Salem");
+		System.out.println("Salem To Chennai" +" "+ " Chennai to Salem");
+		System.out.println("Chennai To Hyderbad" +" "+ " Hyderbad to Chennai");
+		System.out.println("Banglore To Chennai" +" "+ " Chennai to Banglore");
+		System.out.println("==========================================================================");
+
+	}
+}
+class Car extends Vechicle{
+	String name,number,color;
+	Car(String name,String number,String color)
+	{
+		super(name,number,color);
+	}
+	public void varietyOfSeaters()
+	{
+		System.out.println("2 Seaters");
+		System.out.println("4 Seaters");
+		System.out.println("5 Seaters");
+		System.out.println("7 Seaters");
+		System.out.println("==========================================================================");
+
+	}
+}
+class Bike extends Vechicle{
+
+	Bike(String name, String number, String color) {
+		super(name, number, color);
+	}
+	public void varientOfBikes()
+	{
+		System.out.println("v2");
+		System.out.println("v3");
+		System.out.println("v4");
+		System.out.println("==========================================================================");
+
+
+	}
+}
+public class Road {
+
+	public static void main(String[] args) {
+		Truck obj=new Truck("Saro","TN54A5543","Red");
+		obj.VarietyOfTrucks();
+		Bus obj1=new Bus("JTS","TN54A2345","Merron");
+		System.out.print(obj1.color);
+		obj1.LocationToTravel();
+		Car obj2=new Car("NANO","TN54Q8473","Black");
+		obj2.varietyOfSeaters();
+		Bike obj3=new Bike("R15","TN54U8473","Silver");
+		obj3.varientOfBikes();
+	}
+
+}
+
+Output:
+
+Name of the Vechicle:Saro
+Number of the Vechicle: TN54A5543
+Colour of the Vechicle: Red
+Sand_Load
+Grains_Load
+Vechiles_Load
+Stone_Load
+Parcel_Services
+==========================================================================
+Name of the Vechicle:JTS
+Number of the Vechicle: TN54A2345
+Colour of the Vechicle: Merron
+Salem To Hyderbad  Hyderbad to Salem
+Salem To Chennai  Chennai to Salem
+Chennai To Hyderbad  Hyderbad to Chennai
+Banglore To Chennai  Chennai to Banglore
+==========================================================================
+Name of the Vechicle:NANO
+Number of the Vechicle: TN54Q8473
+Colour of the Vechicle: Black
+2 Seaters
+4 Seaters
+5 Seaters
+7 Seaters
+==========================================================================
+Name of the Vechicle:R15
+Number of the Vechicle: TN54U8473
+Colour of the Vechicle: Silver
+v2
+v3
+v4
+==========================================================================
+
+========================================================================================================================================================================
+========================================================================================================================================================================
