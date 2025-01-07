@@ -1,0 +1,401 @@
+
+1). Bank Management.
+
+
+
+
+
+package Advance_OOPS;
+
+class Account{
+	
+	double bal,Total;
+	public long accNum;
+	double balance;
+	String accHolderName;
+	public Account() {
+		
+	}
+	public Account(long accNum, double balance, String accHolderName) {
+		this.accNum = accNum;
+		this.balance = balance;
+		this.accHolderName = accHolderName;
+	}
+	public long getAccountNumber()
+	{
+		return accNum;
+	}
+	public void setAccountNumber(long accNum)
+	{
+		this.accNum=accNum;
+	}
+	public double getBalance() {
+		return balance;
+	}
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
+	public String getAccHolderName() {
+		return accHolderName;
+	}
+	public void setAccHolderName(String accHolderName) {
+		this.accHolderName = accHolderName;
+	}
+	
+	public void deposit(double amount)
+	{
+		balance+=amount;
+	}
+	public void withdraw(double amount)
+	{
+		bal=balance;
+		Total+=amount;
+		bal=bal-amount;
+		if(bal<=500)
+		{
+			System.out.println("Cannont Withdrawal the amount");
+			return;
+		}
+		balance-=amount;
+	}
+	
+	
+}
+
+public class Person extends Account{
+	
+	
+	public Person(long accNum, double balance, String accHolderName) {
+		super(accNum, balance, accHolderName);
+	}
+	private String name;
+	private byte age;
+	
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public byte getAge() {
+		return age;
+	}
+	public void setAge(byte age) {
+		this.age = age;
+	}
+	
+public static void main(String[] args) {
+		
+		Person smith=new Person(5433890456l,2000,"smith");
+		Person kathy=new Person(34567887621l,3000,"kathy");
+		smith.deposit(2000);
+		kathy.withdraw(2000);
+//		Savings_Account savings = new Savings_Account(5433890456l,200,"smith");
+		
+		System.out.println(smith.getAccHolderName()+": "+smith.getBalance());
+		System.out.println(kathy.getAccHolderName()+": "+kathy.getBalance());
+	}
+}
+
+class Savings_Account extends Account{
+	
+	final double minimum_Balance=500;
+	
+	@Override
+	public void withdraw(double amount)
+	{
+		if(balance<=minimum_Balance)
+		{
+			System.out.println("Cannont Withdrawal the amount");
+			return;
+		}
+	}
+}
+
+class CurrentAccount extends Account{
+	
+	double overdraft = 5000;
+	public void withdraw(double amount)
+	{
+		if(Total>overdraft)
+		{
+			System.out.println("True");
+			return;
+		}
+		else {
+			System.out.println("False");
+		}
+	}
+}
+
+Output:
+
+smith: 4000.0
+kathy: 1000.0
+
+
+=========================================================================================================================================================
+=========================================================================================================================================================
+
+
+2.Library Management:
+
+package Advance_OOPS;
+
+
+abstract class Item{
+	private int id;
+	private String title;
+	private int noOfCopies;
+	
+	Item(){
+		
+	}
+	Item(int id,String title,int noOfCopies)
+	{
+		this.id=id;
+		this.title=title;
+		this.noOfCopies=noOfCopies;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id)
+	{
+		this.id=id;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public int getNoOfCopies() {
+		return noOfCopies;
+	}
+	public void setNoOfCopies(int noOfCopies) {
+		this.noOfCopies = noOfCopies;
+	}
+	
+	public void checkOut()
+	{
+		if(noOfCopies>0)
+		{
+			noOfCopies--;
+			System.out.println(title +" is Checked Out by "+id);
+		}else {
+			System.out.println("Not Available");
+		}
+	}
+	public void checkIn()
+	{
+		noOfCopies++;
+		System.out.println(title+" is returned by "+id);
+	}
+	public void addItem(int noOfCount) {
+		noOfCopies+=noOfCount;
+		System.out.println("Total Quantity of Book "+title+" is: "+noOfCopies);
+	}
+	@Override
+	public String toString() {
+		return "Item [Id=" + id + ", Title=" + title + ", Number of Copies= " + noOfCopies + "]";
+	}
+	public abstract void print();
+	
+}
+
+abstract class WrittenItem extends Item{
+	
+	public WrittenItem(int id, String title, int noOfCopies,int year) {
+		super(id, title, noOfCopies);
+	}
+	public WrittenItem(int id, String title, int noOfCopies,String author) {
+		super(id, title, noOfCopies);
+	}
+	
+	private String author;
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	@Override
+	public String toString() {
+		return "WrittenItem [author=" + author + "]";
+	}
+	
+	
+}
+class Book extends WrittenItem{
+	Book(int id,String title,int noOfCopies,String author)
+	{
+		super(id,title,noOfCopies,author);
+	}
+	@Override
+	public void print()
+	{
+		System.out.println("Id of the Book: "+getId());
+		System.out.println("Title of the Book: "+getTitle());
+		System.out.println("Number of Copies for a book: "+getNoOfCopies());
+		System.out.println("Author of the Book: "+getAuthor());
+	}
+}
+class JournalPaper extends WrittenItem{
+	JournalPaper(int id,String title,int noOfCopies,int year)
+	{
+		super(id,title,noOfCopies,year);
+	}
+	private int year;
+
+	public int getYear() {
+		return year;
+	}
+
+	public void setYear(int year) {
+		this.year = year;
+	}
+	
+	public void print()
+	{
+		System.out.println("Id of the Book: "+getId());
+		System.out.println("Title of the Book: "+getTitle());
+		System.out.println("Number of Copies for a book: "+getNoOfCopies());
+		System.out.println("Year of the Book released: "+getYear());
+	}
+	
+}
+
+abstract class MediaItem extends Item{
+	private int runtime;
+
+	public int getRuntime() {
+		return runtime;
+	}
+
+	public void setRuntime(int runtime) {
+		this.runtime = runtime;
+	}
+	
+	
+}
+
+class Video extends MediaItem{
+	private String director;
+	private String genre;
+	private int year;
+	
+	
+	public Video(String director, String genre, int year) {
+		super();
+		this.director = director;
+		this.genre = genre;
+		this.year = year;
+	}
+	public String getDirector() {
+		return director;
+	}
+	public void setDirector(String director) {
+		this.director = director;
+	}
+	public String getGenre() {
+		return genre;
+	}
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
+	public int getYear() {
+		return year;
+	}
+	public void setYear(int year) {
+		this.year = year;
+	}
+	@Override
+	public String toString() {
+		return "Video [director=" + director + ", genre=" + genre + ", year=" + year + "]";
+	}
+	
+	@Override
+	public void print()
+	{
+		System.out.println("Video Deatails: "+this);
+	}
+}
+
+class CD extends MediaItem{
+	private String artist;
+	private String genre;
+	public String getArtist() {
+		return artist;
+	}
+	public void setArtist(String artist) {
+		this.artist = artist;
+	}
+	public String getGenre() {
+		return genre;
+	}
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
+	@Override
+	public String toString() {
+		return "CD [artist=" + artist + ", genre=" + genre + "]";
+	}
+	@Override
+	public void print()
+	{
+		System.out.println("CD Deatails: "+this);
+	}
+	
+}
+public class Library {
+
+	public static void main(String[] args) {
+		
+	Book book=new Book(23667,"Harry Potter",12,"Jimmy");
+	JournalPaper paper=new JournalPaper(23667,"Harry Potter",12,2005);
+	Video video=new Video("Jimmy","Fantasy",2005);
+	CD cd=new CD();
+	cd.setArtist("Harry");
+	cd.setGenre("Fantasy");
+	
+	book.checkOut();
+	book.checkIn();
+	book.addItem(3);
+	System.out.println(book.getNoOfCopies());
+	book.print();
+	System.out.println("=======================================================================================================================================");
+	paper.print();
+	System.out.println("=======================================================================================================================================");
+	video.toString();
+	video.print();
+	System.out.println("=======================================================================================================================================");
+	cd.toString();
+	cd.print();
+	}
+
+}
+
+Output:
+
+Harry Potter is Checked Out by 23667
+Harry Potter is returned by 23667
+Total Quantity of Book Harry Potter is: 15
+15
+Id of the Book: 23667
+Title of the Book: Harry Potter
+Number of Copies for a book: 15
+Author of the Book: null
+=======================================================================================================================================
+Id of the Book: 23667
+Title of the Book: Harry Potter
+Number of Copies for a book: 12
+Year of the Book released: 0
+=======================================================================================================================================
+Video Deatails: Video [director=Jimmy, genre=Fantasy, year=2005]
+=======================================================================================================================================
+CD Deatails: CD [artist=Harry, genre=Fantasy]
