@@ -1,0 +1,120 @@
+package Assignment_04;
+ 
+1. 
+
+
+import java.util.Scanner;
+ 
+public class Age_Exception {
+ 
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter Your Age:");
+		int age=sc.nextInt();
+		try {
+			if (age<15)
+			  throw new Exception();
+			else {
+				System.out.println("Age is Valid: "+age);
+			}
+		}
+        catch (Exception e) {
+        	System.out.println("Age should not be less than 15.");
+        }
+	}
+ 
+}
+
+Output:
+
+Enter Your Age:
+14
+Age should not be less than 15.
+
+--------------------------------------
+
+Enter Your Age:
+18
+Age is Valid: 18
+
+
+===========================================================================================================================================================================
+===========================================================================================================================================================================
+
+2. 
+
+package Assignment_04;
+ 
+import java.util.Scanner;
+ 
+public class Name_Exception {
+ 
+	public static void main(String[] args) {
+		
+			Scanner sc=new Scanner(System.in);
+			System.out.println("Enter First Name:");
+			String FirstName=sc.nextLine();
+			System.out.println("Enter Last Name:");
+			String LastName=sc.nextLine();
+			try {
+				if (FirstName.length()==0 || LastName.length()==0) {
+					throw new Exception();
+				}
+				else
+				{
+					System.out.println("Fullname is:"+FirstName+" "+LastName);
+				}
+				
+			}
+			catch (Exception e) {
+				System.out.println("FirstName and LastName should not be blank");
+			}
+	}
+ 
+}
+ 
+Output:
+
+Enter First Name:
+Sanjay
+Enter Last Name:
+P
+
+Fullname is:Sanjay P
+=================================================================================================================================================================================
+=================================================================================================================================================================================
+
+3.
+
+package com.demo.exception;
+ 
+class SalaryException extends Exception{
+	public SalaryException(String msg) {
+		super(msg);
+	}
+}
+ 
+public class Validate_Salary {
+	public void validSalary(int salary)throws SalaryException{
+		if(salary < 3000) {
+			throw new SalaryException("Salary below 3000 is invalid");
+		}
+		System.out.println("Salary is Valid.");
+	}
+ 
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ValidSalary obj = new ValidSalary();
+		try {
+		obj.validSalary(5300);
+		}
+		catch(SalaryException e){
+			System.out.println(e.getMessage());
+		}
+	}
+ 
+}
+
+Output:
+
+Salary is Valid.
